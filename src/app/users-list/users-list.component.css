@@ -1,0 +1,56 @@
+.header {
+    background-color: #333333;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #000000;
+    padding: 10px;
+}
+.user-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px
+}
+.user-info {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.user-info-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.user-info-buttons > div:first-of-type {
+    margin-right: 10px;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    margin: auto;
+}
+ 
+.buttons > button {
+    width: 50%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.buttons > button:hover {
+    cursor: pointer;
+}

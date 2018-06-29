@@ -1,0 +1,49 @@
+<div *ngIf="user">
+  <div class="header">
+    <button (click)="toUsersList()"> <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ5MS4zMTgsMjM1LjMxOEgyMC42ODJDOS4yNiwyMzUuMzE4LDAsMjQ0LjU3OCwwLDI1NmMwLDExLjQyMyw5LjI2LDIwLjY4MiwyMC42ODIsMjAuNjgyaDQ3MC42MzYgICAgYzExLjQyMywwLDIwLjY4Mi05LjI1OSwyMC42ODItMjAuNjgyQzUxMiwyNDQuNTc4LDUwMi43NDEsMjM1LjMxOCw0OTEuMzE4LDIzNS4zMTh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDkuOTMyLDI1NkwyMTEuNzk1LDk0LjEzNmM4LjA3Ny04LjA3Nyw4LjA3Ny0yMS4xNzIsMC0yOS4yNDljLTguMDc3LTguMDc2LTIxLjE3Mi04LjA3Ni0yOS4yNDksMEw2LjA1OCwyNDEuMzc1ICAgIGMtOC4wNzcsOC4wNzctOC4wNzcsMjEuMTcyLDAsMjkuMjQ5bDE3Ni40ODgsMTc2LjQ4OGM0LjAzOCw0LjAzOSw5LjMzMiw2LjA1OCwxNC42MjUsNi4wNThjNS4yOTMsMCwxMC41ODctMi4wMTksMTQuNjI1LTYuMDU4ICAgIGM4LjA3Ny04LjA3Nyw4LjA3Ny0yMS4xNzIsMC0yOS4yNDlMNDkuOTMyLDI1NnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /> Back to users list </button>
+  </div>
+  <div class="user">
+    <div class="user-info">
+      <div class="user-info-avatar"><img src="{{user.avatar_url}}" alt="user-avatar"></div>
+      <div class="user-info-main">
+        <h2>{{ user.login }} | {{user.name}} </h2>
+        <div>followers: {{ user.followers }}</div>
+        <div>following: {{ user.following }}</div>
+        <div>public gists: {{ user.public_gists }}</div>
+        <div>public repos: {{ user.public_repos }}</div>
+        <div>member since: {{ user.created_at | date }}</div>
+      </div>
+    </div>
+    <div class="user-followers" *ngIf="userFollowers"><b>Followers:</b>
+      <div class="user-followers-avatars">
+        <a *ngFor="let follower of userFollowers"  href="{{ follower.html_url }}" target="_blank">
+          <img src="{{follower.avatar_url}}" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="user-subscriptions" *ngIf="userSubscriptions"><b>Subscriptions:</b>
+      <div class="user-subscriptions-subscription" *ngFor="let subscription of userSubscriptions">
+        <h3> {{ subscription.name }} </h3>
+        <div>id: {{ subscription.id }}</div>
+        <div *ngIf="subscription.language">language: {{ subscription.language }} </div>
+        <div>created at: {{ subscription.created_at | date }} </div>
+        <div>open issues: {{ subscription.open_issues }} </div>
+        <div>watchers: {{ subscription.watchers }}</div>
+      </div>
+    </div>
+    <div *ngIf="userOrganizations" class="user-organizations"><b>Organizations:</b>
+        <div class="user-organizations-organization" *ngFor="let organization of userOrganizations">
+          <div class="user-organizations-organization-avatar">
+            <img src="{{organization.avatar_url}}" alt="avatar_url" />
+          </div>
+          <div class="user-organizations-organization-info">
+            <div>
+              <h3> {{ organization.description }} </h3>
+              <div>id: {{ organization.id }} </div>
+              <div>login: {{  organization.login }} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
