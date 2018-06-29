@@ -9,9 +9,14 @@ export class ApisService {
 
   users = 'https://api.github.com/users';
   user = 'https://api.github.com/users/';
+  organizations = 'https://api.github.com/organizations';
 
   getUsers(): Observable<any> {
     return this.http.get(this.users)
+  };
+
+  getOrganizations(): Observable<any> {
+    return this.http.get(this.organizations)
   };
 
   getUser(userLogin): Observable<any> {

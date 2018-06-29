@@ -7,11 +7,11 @@
     align-items: center;
     padding: 0 30px;
 }
-.header-search:not(:focus) ~ .header-search-list {
+/* .header-search:not(:focus) ~ .header-search-list {
     display: none;
-}
+} */
 
-.header-search-list {
+/* .header-search-list {
     position: absolute;
     left: 30px;
     top: 60px;
@@ -24,9 +24,9 @@
     color: #000000;
 }
 
-.header-search-list > li {
-    list-style-type: none;
-}
+ .header-search-list > li {
+    list-style-type: none; 
+} */
 
 .user {
     display: flex;

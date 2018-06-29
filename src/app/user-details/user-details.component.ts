@@ -20,7 +20,7 @@ export class UserDetailsComponent implements OnInit {
   userSubscriptions: object[];
   userFollowers: object[];
   userOrganizations: object[];
-  isLoad: boolean;
+  isLoading: boolean;
   login = this.route.snapshot.paramMap.get('login');
 
   getUserByLogin(): void {
@@ -28,7 +28,7 @@ export class UserDetailsComponent implements OnInit {
     this.apisService.getUser(this.login).subscribe(
       (response) => { 
         this.user = response;
-        this.isLoad = true; 
+        this.isLoading = false; 
         console.log(this.user)
       })
   }
@@ -37,6 +37,7 @@ export class UserDetailsComponent implements OnInit {
     this.apisService.getUserSubscriptions(this.login).subscribe(
       (response) => { 
         this.userSubscriptions = response;
+        this.isLoading = false;
     })
   }
 
@@ -44,6 +45,7 @@ export class UserDetailsComponent implements OnInit {
     this.apisService.getUserFollowers(this.login).subscribe(
       (response) => { 
         this.userFollowers = response;
+        this.isLoading = false;
       })
   }
 
@@ -51,11 +53,13 @@ export class UserDetailsComponent implements OnInit {
     this.apisService.getUserOrganizations(this.login).subscribe(
       (response) => { 
         this.userOrganizations = response;
+        this.isLoading = false;
       })
   }
 
 
   ngOnInit() {
+    this.isLoading = true;
     this.getUserByLogin();
     this.getUserFollowers();
     this.getUserSubscription();
