@@ -12,6 +12,7 @@ export class UsersListComponent implements OnInit {
 
   nextUsers = 0;
   users;
+  newUsers;
   fromUser: number = 0;
   toUser: number = this.fromUser + 10;
 
@@ -23,6 +24,13 @@ export class UsersListComponent implements OnInit {
       console.log('response this users' + this.users)
 
   }
+
+search(value) {
+  value === "" ? 
+  this.newUsers = []
+  : this.newUsers = this.users.filter(user => user.login.includes(value))
+  console.log(this.newUsers);
+}
 
   next() {
     this.fromUser += 10;

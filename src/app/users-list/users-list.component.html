@@ -1,6 +1,11 @@
 <div *ngIf="users">
   <div class="header">
-    <input type="text" placeholder="Search...">
+    <div class="header-search">
+      <input type="text" (keyup)="search($event.target.value)" placeholder="Search...">
+      <ul class="header-search-list">
+        <li *ngFor="let user of newUsers"><a routerLink="/user/{{user.login}}">{{user.login}}</a></li>
+      </ul>
+    </div>
     <div>
       <button>Users</button>
       <button>Orgs</button>
